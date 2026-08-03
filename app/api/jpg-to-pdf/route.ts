@@ -1,0 +1,111 @@
+import { PDFDocument } from "pdf-lib";
+
+export const runtime = "nodejs";
+
+export async function POST(request: Request) {
+  try {
+    const formData = await request.formData();
+    const uploadedFiles = formData.getAll("files");
+
+    const imageFiles = uploadedFiles.filter(
+      (item): item is File => item instanceof File
+    );
+
+    if (imageFiles.length === 0) {
+      return Response.json(
+        { error: "Please choose at least one JPG or PNG image." },
+        { status: 400 }
+      );
+    }
+
+    if (imageFiles.length > 20) {
+      return Response.json(
+        { error: "You can upload a maximum of 20 images." },
+        { status: 400 }
+      );
+    }
+
+    const pdfDocument = await PDFDocument.create();
+
+    for (const file of imageFiles) {
+      const lowerName = file.name.toLowerCase();
+      const isJpg =
+        file.type === "image/jpeg" ||
+        lowerName.endsWith(".jpg") ||
+        lowerName.endsWith(".jpeg");
+
+      const isPng =
+        file.type === "image/png" ||
+        lowerName.endsWith(".png");
+
+      if (!isJpg && !isPng) {
+        return Response.json(
+          { error: `${file.name} is not a supported image.` },
+          { status: 400 }
+        );
+      }
+
+      if (file.size > 15 * 1024 * 1024) {
+        return Response.json(
+          { error: `${file.name} is larger than 15 MB.` },
+          { status: 400 }
+        );
+      }
+
+      const imageBytes = await file.arrayBuffer();
+
+      const embeddedImage = isPng
+        ? await pdfDocument.embedPng(imageBytes)
+        : await pdfDocument.embedJpg(imageBytes);
+
+      const originalWidth = embeddedImage.width;
+      const originalHeight = embeddedImage.height;
+
+      const maximumWidth = 595;
+      const maximumHeight = 842;
+      const margin = 24;
+
+      const availableWidth = maximumWidth - margin * 2;
+      const availableHeight = maximumHeight - margin * 2;
+
+      const scale = Math.min(
+        availableWidth / originalWidth,
+        availableHeight / originalHeight,
+        1
+      );
+
+      const width = originalWidth * scale;
+      const height = originalHeight * scale;
+
+      const page = pdfDocument.addPage([
+        maximumWidth,
+        maximumHeight,
+      ]);
+
+      page.drawImage(embeddedImage, {
+        x: (maximumWidth - width) / 2,
+        y: (maximumHeight - height) / 2,
+        width,
+        height,
+      });
+    }
+
+    const pdfBytes = await pdfDocument.save();
+
+    return new Response(pdfBytes, {
+      status: 200,
+      headers: {
+        "Content-Type": "application/pdf",
+        "Content-Disposition":
+          'attachment; filename="images.pdf"',
+      },
+    });
+  } catch (error) {
+    console.error("JPG to PDF failed:", error);
+
+    return Response.json(
+      { error: "The images could not be converted to PDF." },
+      { status: 500 }
+    );
+  }
+}
