@@ -92,14 +92,17 @@ export async function POST(request: Request) {
 
     const pdfBytes = await pdfDocument.save();
 
-    const responseBody = new ArrayBuffer(pdfBytes.byteLength);
-    new Uint8Array(responseBody).set(pdfBytes);
+const buffer = pdfBytes.buffer.slice(
+  pdfBytes.byteOffset,
+  pdfBytes.byteOffset + pdfBytes.byteLength
+);
 
-    return new Response(responseBody, {
+return new Response(buffer, {
       status: 200,
       headers: {
         "Content-Type": "application/pdf",
-        "Content-Disposition": 'attachment; filename="images.pdf"',
+        "Content-Disposition":
+          'attachment; filename="images.pdf"',
       },
     });
   } catch (error) {

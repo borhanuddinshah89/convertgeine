@@ -51,7 +51,7 @@ export async function POST(request: Request) {
 
     const result = await output.save();
 
-    return new Response(result, {
+    return new Response(result as BodyInit, {
       headers: {
         "Content-Type": "application/pdf",
         "Content-Disposition":
