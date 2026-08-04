@@ -25,14 +25,27 @@ export default function MergePdfPage() {
         form.append("files", file);
       });
 
-      const response = await fetch("/api/merge-pdf", {
+      const response = await fetch(
+        "https://convertgeine-compressor.onrender.com/merge",
+        {
         method: "POST",
         body: form,
       });
 
       if (!response.ok) {
-        const result = await response.json();
-        throw new Error(result.error || "Merge failed.");
+        let errorMessage = "Merge failed.";
+
+        try {
+          const result = await response.json();
+          errorMessage =
+            result.detail ||
+            result.error ||
+            errorMessage;
+        } catch {
+          errorMessage = `Merge failed with status ${response.status}.`;
+        }
+
+        throw new Error(errorMessage);
       }
 
       const blob = await response.blob();
