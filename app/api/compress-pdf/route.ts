@@ -4,6 +4,12 @@ export const runtime = "nodejs";
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024;
 
+function toArrayBuffer(bytes: Uint8Array): ArrayBuffer {
+  const buffer = new ArrayBuffer(bytes.byteLength);
+  new Uint8Array(buffer).set(bytes);
+  return buffer;
+}
+
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
@@ -40,22 +46,27 @@ export async function POST(request: Request) {
       );
     }
 
-    const inputBuffer = await uploadedFile.arrayBuffer();
-    const inputBytes = new Uint8Array(inputBuffer);
+    const originalBuffer = await uploadedFile.arrayBuffer();
+    const originalBytes = new Uint8Array(originalBuffer);
 
-    const pdfDocument = await PDFDocument.load(inputBytes, {
+    const pdfDocument = await PDFDocument.load(originalBytes, {
       updateMetadata: false,
     });
 
-    const outputBytes = await pdfDocument.save({
+    const processedBytes = await pdfDocument.save({
       useObjectStreams: true,
       addDefaultPage: false,
       objectsPerTick: 50,
     });
 
-    // Copy into a standard ArrayBuffer for Next.js Response compatibility.
-    const responseBuffer = new ArrayBuffer(outputBytes.byteLength);
-    new Uint8Array(responseBuffer).set(outputBytes);
+    const useProcessedVersion =
+      processedBytes.byteLength < originalBytes.byteLength;
+
+    const finalBytes = useProcessedVersion
+      ? processedBytes
+      : originalBytes;
+
+    const responseBuffer = toArrayBuffer(finalBytes);
 
     const originalName = uploadedFile.name.replace(/\.pdf$/i, "");
     const safeName =
@@ -69,8 +80,9 @@ export async function POST(request: Request) {
           `attachment; filename="compressed-${safeName}.pdf"`,
         "Content-Length": String(responseBuffer.byteLength),
         "Cache-Control": "no-store",
-        "X-Original-Size": String(uploadedFile.size),
-        "X-Compressed-Size": String(responseBuffer.byteLength),
+        "X-Original-Size": String(originalBytes.byteLength),
+        "X-Final-Size": String(finalBytes.byteLength),
+        "X-Compression-Applied": useProcessedVersion ? "yes" : "no",
       },
     });
   } catch (error) {
