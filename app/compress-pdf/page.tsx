@@ -267,9 +267,6 @@ export default function CompressPdfPage() {
         objectsPerTick: 25,
       });
 
-      if (typeof sourcePdf.destroy === "function") {
-        await sourcePdf.destroy();
-      }
 
       const compressionWasUseful =
         compressedBytes.byteLength > 0 &&
