@@ -185,8 +185,6 @@ export default function CompressPdfPage() {
 
       const loadingTask = pdfjs.getDocument({
         data: pdfJsBytes,
-        useWorkerFetch: true,
-        isEvalSupported: false,
       });
 
       const sourcePdf = await loadingTask.promise;
