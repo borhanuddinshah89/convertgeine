@@ -24,7 +24,7 @@ export default function PdfToJpgPage() {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch("/api/pdf-to-jpg", {
+      const response = await fetch("https://convertgeine-compressor.onrender.com/pdf-to-jpg", {
         method: "POST",
         body: formData,
       });
