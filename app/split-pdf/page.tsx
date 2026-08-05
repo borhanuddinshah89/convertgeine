@@ -31,7 +31,7 @@ export default function SplitPdfPage() {
       formData.append("file", file);
       formData.append("pages", pageRange);
 
-      const response = await fetch("/api/split-pdf", {
+      const response = await fetch("https://convertgeine-compressor.onrender.com/split", {
         method: "POST",
         body: formData,
       });
