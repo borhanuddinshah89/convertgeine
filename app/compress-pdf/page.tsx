@@ -10,6 +10,7 @@ import {
 } from "react";
 import { PDFDocument } from "pdf-lib";
 import ToolSeoSection from "@/components/ToolSeoSection";
+import RelatedTools from "@/components/RelatedTools";
 
 type CompressionLevel = "maximum" | "balanced" | "quality";
 
@@ -576,6 +577,16 @@ export default function CompressPdfPage() {
             "Choose the balance between smaller size and clearer pages.",
             "Process files privately in your browser.",
             "Keep the original file when compression would make it larger.",
+          ]}
+        />
+        <RelatedTools
+          title="Related PDF Tools"
+          tools={[
+            { name: "Merge PDF", href: "/merge-pdf" },
+            { name: "Split PDF", href: "/split-pdf" },
+            { name: "JPG to PDF", href: "/jpg-to-pdf" },
+            { name: "PDF to JPG", href: "/pdf-to-jpg" },
+            { name: "PDF Editor", href: "/pdf-editor" },
           ]}
         />
       </div>
