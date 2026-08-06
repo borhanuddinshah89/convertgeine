@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import ToolSeoSection from "@/components/ToolSeoSection";
+import RelatedTools from "@/components/RelatedTools";
 import PdfUploader from "../../components/PdfUploader";
 
 export default function SplitPdfPage() {
@@ -144,6 +145,16 @@ export default function SplitPdfPage() {
             "Create smaller, easier-to-share PDF files.",
             "Prepare documents for applications and submissions.",
             "No registration is required.",
+          ]}
+        />
+        <RelatedTools
+          title="Related PDF Tools"
+          tools={[
+            { name: "Compress PDF", href: "/compress-pdf" },
+            { name: "Merge PDF", href: "/merge-pdf" },
+            { name: "JPG to PDF", href: "/jpg-to-pdf" },
+            { name: "PDF to JPG", href: "/pdf-to-jpg" },
+            { name: "PDF Editor", href: "/pdf-editor" },
           ]}
         />
       </div>

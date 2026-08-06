@@ -3,6 +3,7 @@
 import { ChangeEvent, useState } from "react";
 import Link from "next/link";
 import ToolSeoSection from "@/components/ToolSeoSection";
+import RelatedTools from "@/components/RelatedTools";
 
 function formatFileSize(bytes: number) {
   if (bytes < 1024) return `${bytes} B`;
@@ -201,6 +202,16 @@ export default function JpgToPdfPage() {
             "Create files that are easier to email and submit.",
             "Use the tool on desktop, tablet, or mobile.",
             "No registration is required.",
+          ]}
+        />
+        <RelatedTools
+          title="Related PDF Tools"
+          tools={[
+            { name: "Compress PDF", href: "/compress-pdf" },
+            { name: "Merge PDF", href: "/merge-pdf" },
+            { name: "Split PDF", href: "/split-pdf" },
+            { name: "PDF to JPG", href: "/pdf-to-jpg" },
+            { name: "PDF Editor", href: "/pdf-editor" },
           ]}
         />
       </div>

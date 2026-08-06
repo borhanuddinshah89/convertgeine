@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import ToolSeoSection from "@/components/ToolSeoSection";
+import RelatedTools from "@/components/RelatedTools";
 import PdfUploader from "../../components/PdfUploader";
 
 export default function MergePdfPage() {
@@ -134,6 +135,16 @@ export default function MergePdfPage() {
             "Make submissions and email attachments easier to manage.",
             "Preserve the order of your selected files.",
             "No registration is required.",
+          ]}
+        />
+        <RelatedTools
+          title="Related PDF Tools"
+          tools={[
+            { name: "Compress PDF", href: "/compress-pdf" },
+            { name: "Split PDF", href: "/split-pdf" },
+            { name: "JPG to PDF", href: "/jpg-to-pdf" },
+            { name: "PDF to JPG", href: "/pdf-to-jpg" },
+            { name: "PDF Editor", href: "/pdf-editor" },
           ]}
         />
       </div>

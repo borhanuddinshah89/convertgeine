@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import ToolSeoSection from "@/components/ToolSeoSection";
+import RelatedTools from "@/components/RelatedTools";
 import PdfUploader from "../../components/PdfUploader";
 
 export default function PdfToJpgPage() {
@@ -115,6 +116,16 @@ export default function PdfToJpgPage() {
             "Use converted pages in presentations, documents, and websites.",
             "Download all pages together when converting a multi-page PDF.",
             "No registration is required.",
+          ]}
+        />
+        <RelatedTools
+          title="Related PDF Tools"
+          tools={[
+            { name: "Compress PDF", href: "/compress-pdf" },
+            { name: "Merge PDF", href: "/merge-pdf" },
+            { name: "Split PDF", href: "/split-pdf" },
+            { name: "JPG to PDF", href: "/jpg-to-pdf" },
+            { name: "PDF Editor", href: "/pdf-editor" },
           ]}
         />
       </div>
