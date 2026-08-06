@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import ToolSeoSection from "@/components/ToolSeoSection";
 import PdfUploader from "../../components/PdfUploader";
 
 export default function PdfToJpgPage() {
@@ -100,6 +101,22 @@ export default function PdfToJpgPage() {
             </p>
           )}
         </div>
+        <ToolSeoSection
+          tool="PDF to JPG Converter"
+          description="Convert each page of a PDF into a downloadable JPG image. Single-page PDFs download as one image, while multi-page PDFs are packaged together for convenient downloading."
+          steps={[
+            "Choose a PDF file from your device.",
+            "Start the PDF to JPG conversion.",
+            "Wait while each page is converted into an image.",
+            "Download the JPG image or ZIP file containing all converted pages.",
+          ]}
+          benefits={[
+            "Turn PDF pages into widely supported image files.",
+            "Use converted pages in presentations, documents, and websites.",
+            "Download all pages together when converting a multi-page PDF.",
+            "No registration is required.",
+          ]}
+        />
       </div>
     </main>
   );
