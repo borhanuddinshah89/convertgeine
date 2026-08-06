@@ -1,4 +1,5 @@
 import Logo from "@/components/Logo";
+import Hero from "@/components/home/Hero";
 import HomeHero from "@/components/home/HomeHero";
 import PopularTools from "@/components/home/PopularTools";
 import ToolCategories from "@/components/home/ToolCategories";
@@ -39,7 +40,7 @@ export default function Home() {
         </div>
       </header>
 
-      <HomeHero />
+      <Hero />
       <PopularTools />
       <ToolCategories />
       <RecentlyAdded />

@@ -1,21 +1,29 @@
 export default function Hero() {
   return (
-    <section className="mx-auto max-w-6xl py-16 text-center">
+    <section className="py-16 text-center">
       <h1 className="text-5xl font-extrabold tracking-tight">
-        Free Online PDF, Image, ZIP & Calculator Tools
+        Free PDF & Image Tools
       </h1>
 
-      <p className="mx-auto mt-6 max-w-3xl text-lg text-slate-400">
-        Fast, secure and completely free online tools.
-        No registration. No installation.
-        Works on desktop and mobile.
+      <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
+        Convert, compress, merge, split and edit PDFs and images in seconds.
+        Fast, secure and free.
       </p>
 
-      <div className="mt-8 flex flex-wrap justify-center gap-3 text-sm">
-        <span className="rounded-full bg-green-900/30 px-4 py-2">✅ Free Forever</span>
-        <span className="rounded-full bg-blue-900/30 px-4 py-2">🔒 Secure</span>
-        <span className="rounded-full bg-purple-900/30 px-4 py-2">📱 Mobile Friendly</span>
-        <span className="rounded-full bg-orange-900/30 px-4 py-2">⚡ Fast</span>
+      <div className="mt-10 flex flex-wrap justify-center gap-4">
+        <a
+          href="/compress-pdf"
+          className="rounded-xl bg-blue-600 px-6 py-3 font-semibold hover:bg-blue-700"
+        >
+          Compress PDF
+        </a>
+
+        <a
+          href="/merge-pdf"
+          className="rounded-xl border border-slate-700 px-6 py-3 font-semibold hover:bg-slate-800"
+        >
+          Merge PDF
+        </a>
       </div>
     </section>
   );
