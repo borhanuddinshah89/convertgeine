@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import ToolSeoSection from "@/components/ToolSeoSection";
 import { useMemo, useState } from "react";
 
 export default function BmiCalculatorPage() {
@@ -69,6 +70,22 @@ export default function BmiCalculatorPage() {
             </div>
           )}
         </div>
+        <ToolSeoSection
+          tool="BMI Calculator"
+          description="Calculate your body mass index using your height and weight. The result provides a general BMI category for adults and should not replace professional medical advice."
+          steps={[
+            "Enter your height.",
+            "Enter your weight.",
+            "Choose the measurement units you prefer.",
+            "Calculate and review your BMI result and category.",
+          ]}
+          benefits={[
+            "Get a quick BMI estimate.",
+            "Use metric or imperial measurements.",
+            "Understand the general adult BMI category.",
+            "No account or registration is required.",
+          ]}
+        />
       </div>
     </main>
   );
