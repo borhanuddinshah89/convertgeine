@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     "/image-compressor",
     "/image-resizer",
+    "/heic-to-jpg",
     "/webp-converter",
     "/passport-photo",
 
@@ -36,8 +37,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/km-to-miles",
     "/inches-to-cm",
     "/temperature-converter",
-
-    "/sitemap",
   ];
 
   return routes.map((route) => ({

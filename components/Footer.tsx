@@ -39,6 +39,7 @@ export default function Footer() {
             <p><Link href="/image-compressor" className="hover:text-white">Image Compressor</Link></p>
             <p><Link href="/webp-converter" className="hover:text-white">WebP Converter</Link></p>
             <p><Link href="/image-resizer" className="hover:text-white">Image Resizer</Link></p>
+            <p><Link href="/heic-to-jpg" className="hover:text-white">HEIC to JPG</Link></p>
             <p><Link href="/qr-code-generator" className="hover:text-white">QR Code Generator</Link></p>
             <p><Link href="/barcode-generator" className="hover:text-white">Barcode Generator</Link></p>
             <p><Link href="/image-compressor" className="hover:text-white">Image Compressor</Link></p>

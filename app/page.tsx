@@ -176,6 +176,13 @@ const popularTools = [
     category: "Converters",
   },
   {
+    title: "HEIC to JPG",
+    description: "Convert iPhone HEIC and HEIF photos to JPG.",
+    href: "/heic-to-jpg",
+    icon: "📱",
+    category: "Photos",
+  },
+  {
     title: "Image Resizer",
     description: "Resize JPG, PNG, and WebP images by width and height.",
     href: "/image-resizer",
