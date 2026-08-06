@@ -160,7 +160,12 @@ const popularTools = [
     title: "Image Compressor",
     description: "Reduce JPG, PNG, and WebP image file sizes online.",
     href: "/image-compressor",
-    icon: "🗜️",
+    },
+  {
+    title: "WebP Converter",
+    description: "Convert JPG, PNG and WebP images.",
+    href: "/webp-converter",
+    icon: "🖼️",
     category: "Photos",
   },
   {
