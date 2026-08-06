@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import ToolSeoSection from "@/components/ToolSeoSection";
 import { useMemo, useState } from "react";
 
 export default function PercentageCalculatorPage() {
@@ -65,6 +66,22 @@ export default function PercentageCalculatorPage() {
             </div>
           )}
         </div>
+        <ToolSeoSection
+          tool="Percentage Calculator"
+          description="Calculate percentages quickly for discounts, taxes, tips, marks, price changes, and everyday math. Use the tool to find a percentage of a number or compare values."
+          steps={[
+            "Enter the number or values you want to calculate.",
+            "Choose the percentage calculation you need.",
+            "Click the calculate button.",
+            "Review the result instantly.",
+          ]}
+          benefits={[
+            "Calculate discounts and price changes.",
+            "Work out marks, tips, taxes, and percentages.",
+            "Get instant results without registration.",
+            "Works on phones, tablets, and computers.",
+          ]}
+        />
       </div>
     </main>
   );
