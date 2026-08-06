@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { PDFDocument, degrees } from "pdf-lib";
 import ToolSeoSection from "@/components/ToolSeoSection";
 import RelatedTools from "@/components/RelatedTools";
@@ -19,8 +19,22 @@ export default function RotatePdfPage() {
   const [message, setMessage] = useState("");
   const [downloadUrl, setDownloadUrl] = useState("");
 
+  const activeUrl = useRef("");
+
+  useEffect(() => {
+    return () => {
+      if (activeUrl.current) {
+        URL.revokeObjectURL(activeUrl.current);
+      }
+    };
+  }, []);
+
   function clearResult() {
-    if (downloadUrl) URL.revokeObjectURL(downloadUrl);
+    if (activeUrl.current) {
+      URL.revokeObjectURL(activeUrl.current);
+      activeUrl.current = "";
+    }
+
     setDownloadUrl("");
   }
 
@@ -68,34 +82,55 @@ export default function RotatePdfPage() {
       const pdf = await PDFDocument.load(bytes);
 
       pdf.getPages().forEach((page) => {
-        const current = page.getRotation().angle;
-        page.setRotation(degrees((current + rotation) % 360));
+        const currentRotation = page.getRotation().angle;
+        page.setRotation(
+          degrees((currentRotation + rotation) % 360)
+        );
       });
 
       const output = await pdf.save();
-      const blob = new Blob([output], { type: "application/pdf" });
+
+      const blob = new Blob(
+        [new Uint8Array(output)],
+        { type: "application/pdf" }
+      );
+
       const url = URL.createObjectURL(blob);
+      activeUrl.current = url;
 
       setDownloadUrl(url);
       setMessage("Finished — your rotated PDF is ready.");
     } catch {
-      setMessage("The PDF could not be rotated.");
+      setMessage(
+        "The PDF could not be rotated. Password-protected or damaged PDFs may not be supported."
+      );
     } finally {
       setLoading(false);
     }
   }
 
+  const downloadName = file
+    ? `rotated-${file.name}`
+    : "rotated-document.pdf";
+
   return (
     <main className="min-h-screen bg-slate-950 px-4 py-12 text-white sm:px-6 sm:py-16">
       <div className="mx-auto max-w-3xl">
-        <Link href="/" className="text-sm font-medium text-blue-400 hover:text-blue-300">
+        <Link
+          href="/"
+          className="text-sm font-medium text-blue-400 hover:text-blue-300"
+        >
           ← Back to home
         </Link>
 
         <section className="mt-8 rounded-3xl border border-slate-800 bg-slate-900 p-8 shadow-2xl">
           <div className="text-center">
             <div className="text-5xl">🔄</div>
-            <h1 className="mt-4 text-4xl font-bold">Rotate PDF Online</h1>
+
+            <h1 className="mt-4 text-4xl font-bold">
+              Rotate PDF Online
+            </h1>
+
             <p className="mt-3 text-slate-400">
               Rotate every page in a PDF by 90°, 180°, or 270°.
             </p>
@@ -129,17 +164,23 @@ export default function RotatePdfPage() {
           </div>
 
           <div className="mt-8">
-            <p className="mb-3 text-sm font-semibold">Rotation</p>
+            <p className="mb-3 text-sm font-semibold">
+              Rotation
+            </p>
 
             <div className="grid grid-cols-3 gap-3">
               {[90, 180, 270].map((angle) => (
                 <button
                   key={angle}
                   type="button"
-                  onClick={() => setRotation(angle)}
+                  onClick={() => {
+                    setRotation(angle);
+                    clearResult();
+                    setMessage("");
+                  }}
                   className={`rounded-xl border px-4 py-4 font-semibold ${
                     rotation === angle
-                      ? "border-blue-500 bg-blue-500/10"
+                      ? "border-blue-500 bg-blue-500/10 text-blue-300"
                       : "border-slate-700 bg-slate-950"
                   }`}
                 >
@@ -153,9 +194,11 @@ export default function RotatePdfPage() {
             type="button"
             onClick={rotatePdf}
             disabled={!file || loading}
-            className="mt-8 w-full rounded-xl bg-blue-600 py-4 font-semibold hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-700"
+            className="mt-8 w-full rounded-xl bg-blue-600 py-4 font-semibold hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400"
           >
-            {loading ? "Rotating..." : `Rotate PDF ${rotation}°`}
+            {loading
+              ? "Rotating..."
+              : `Rotate PDF ${rotation}°`}
           </button>
 
           {message && (
@@ -164,11 +207,11 @@ export default function RotatePdfPage() {
             </p>
           )}
 
-          {downloadUrl && file && (
+          {downloadUrl && (
             <a
               href={downloadUrl}
-              download={`rotated-${file.name}`}
-              className="mt-6 block rounded-xl border border-emerald-700 bg-emerald-950/30 px-6 py-4 text-center font-semibold text-emerald-300"
+              download={downloadName}
+              className="mt-6 block rounded-xl border border-emerald-700 bg-emerald-950/30 px-6 py-4 text-center font-semibold text-emerald-300 hover:bg-emerald-950/50"
             >
               Download Rotated PDF
             </a>
@@ -177,17 +220,17 @@ export default function RotatePdfPage() {
 
         <ToolSeoSection
           tool="Rotate PDF"
-          description="Rotate PDF pages online by 90, 180, or 270 degrees. The tool processes the PDF directly in your browser and creates a new downloadable file."
+          description="Rotate PDF pages online by 90, 180, or 270 degrees. Fix sideways or upside-down PDF documents directly in your browser."
           steps={[
             "Choose a PDF file.",
             "Select 90, 180, or 270 degrees.",
             "Click Rotate PDF.",
-            "Download the rotated document.",
+            "Download the corrected PDF.",
           ]}
           benefits={[
-            "Fix sideways or upside-down PDF pages.",
-            "Rotate all pages in one action.",
-            "Process PDFs directly in your browser.",
+            "Fix incorrectly oriented PDF pages.",
+            "Rotate every page in one action.",
+            "Process your PDF directly in the browser.",
             "No registration is required.",
           ]}
         />
