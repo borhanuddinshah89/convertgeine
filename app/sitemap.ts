@@ -10,13 +10,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/privacy",
     "/terms",
     "/cookies",
-    "/jpg-to-pdf",
-    "/pdf-to-jpg",
+
+    "/compress-pdf",
     "/merge-pdf",
     "/split-pdf",
+    "/pdf-to-jpg",
+    "/jpg-to-pdf",
+    "/pdf-editor",
+
+    "/image-compressor",
+    "/image-resizer",
+    "/webp-converter",
     "/passport-photo",
+
+    "/qr-code-generator",
+    "/barcode-generator",
+    "/uuid-generator",
+
+    "/percentage-calculator",
     "/age-calculator",
     "/bmi-calculator",
+    "/gst-hst-calculator",
+    "/cm-to-feet",
+    "/kg-to-pounds",
+    "/km-to-miles",
+    "/inches-to-cm",
+    "/temperature-converter",
+
+    "/sitemap",
   ];
 
   return routes.map((route) => ({
