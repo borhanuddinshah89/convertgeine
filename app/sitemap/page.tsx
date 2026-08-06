@@ -33,6 +33,9 @@ const sections = [
       ["KG to Pounds", "/kg-to-pounds"],
       ["KM to Miles", "/km-to-miles"],
       ["Temperature Converter", "/temperature-converter"],
+      ["Rotate PDF", "/rotate-pdf"],
+      ["ZIP Extractor", "/zip-extractor"],
+      ["Favicon Generator", "/favicon-generator"],
     ],
   },
   {

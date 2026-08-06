@@ -20,8 +20,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     "/image-compressor",
     "/image-resizer",
-    "/heic-to-jpg",
     "/webp-converter",
+    "/heic-to-jpg",
     "/passport-photo",
 
     "/qr-code-generator",
@@ -32,11 +32,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/age-calculator",
     "/bmi-calculator",
     "/gst-hst-calculator",
+
     "/cm-to-feet",
     "/kg-to-pounds",
     "/km-to-miles",
     "/inches-to-cm",
     "/temperature-converter",
+    "/rotate-pdf",
+    "/zip-extractor",
+    "/favicon-generator",
   ];
 
   return routes.map((route) => ({
