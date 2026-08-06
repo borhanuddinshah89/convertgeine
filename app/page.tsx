@@ -29,6 +29,9 @@ export default function Home() {
             <a href="#utilities" className="hover:text-white">
               Utilities
             </a>
+            <a href="/blog" className="hover:text-white">
+              Guides
+            </a>
           </nav>
 
           <a
