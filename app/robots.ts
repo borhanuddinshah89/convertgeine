@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://convertgeine.com/sitemap.xml",
-    host: "https://convertgeine.com",
+    sitemap: "https://www.convertgeine.com/sitemap.xml",
+    host: "https://www.convertgeine.com",
   };
 }

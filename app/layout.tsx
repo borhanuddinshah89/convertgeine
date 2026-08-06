@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
-const siteUrl = "https://convertgeine.com";
+const siteUrl = "https://www.convertgeine.com";
 const siteName = "ConvertGeine";
 const siteDescription =
   "Free online PDF, photo, calculator and unit converter tools. Compress, merge, split and edit PDFs, prepare passport photos, and complete everyday digital tasks.";
