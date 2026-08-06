@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import ToolSeoSection from "@/components/ToolSeoSection";
 import PdfUploader from "../../components/PdfUploader";
 
 export default function SplitPdfPage() {
@@ -129,6 +130,22 @@ export default function SplitPdfPage() {
             </p>
           )}
         </div>
+        <ToolSeoSection
+          tool="Split PDF"
+          description="Extract selected pages from a PDF and save them as a new document. This is useful when you only need part of a larger file for an application, report, email, or submission."
+          steps={[
+            "Choose a PDF file from your device.",
+            "Enter or select the pages you want to extract.",
+            "Start the split process.",
+            "Download the new PDF containing only the selected pages.",
+          ]}
+          benefits={[
+            "Keep only the pages you need.",
+            "Create smaller, easier-to-share PDF files.",
+            "Prepare documents for applications and submissions.",
+            "No registration is required.",
+          ]}
+        />
       </div>
     </main>
   );
