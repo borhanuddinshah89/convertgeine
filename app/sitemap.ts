@@ -14,19 +14,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/compress-pdf",
     "/merge-pdf",
     "/split-pdf",
+    "/rotate-pdf",
     "/pdf-to-jpg",
     "/jpg-to-pdf",
     "/pdf-editor",
 
     "/image-compressor",
     "/image-resizer",
-    "/webp-converter",
     "/heic-to-jpg",
+    "/webp-converter",
     "/passport-photo",
+    "/favicon-generator",
 
     "/qr-code-generator",
     "/barcode-generator",
     "/uuid-generator",
+    "/zip-extractor",
 
     "/percentage-calculator",
     "/age-calculator",
@@ -38,9 +41,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/km-to-miles",
     "/inches-to-cm",
     "/temperature-converter",
-    "/rotate-pdf",
-    "/zip-extractor",
-    "/favicon-generator",
   ];
 
   return routes.map((route) => ({
