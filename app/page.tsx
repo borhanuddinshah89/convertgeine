@@ -162,6 +162,13 @@ const popularTools = [
     href: "/image-compressor",
     },
   {
+    title: "Image Resizer",
+    description: "Resize JPG, PNG, and WebP images by width and height.",
+    href: "/image-resizer",
+    icon: "📐",
+    category: "Photos",
+  },
+  {
     title: "WebP Converter",
     description: "Convert JPG, PNG and WebP images.",
     href: "/webp-converter",
