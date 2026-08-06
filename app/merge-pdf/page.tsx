@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import ToolSeoSection from "@/components/ToolSeoSection";
 import PdfUploader from "../../components/PdfUploader";
 
 export default function MergePdfPage() {
@@ -119,6 +120,22 @@ export default function MergePdfPage() {
             </p>
           )}
         </div>
+        <ToolSeoSection
+          tool="Merge PDF"
+          description="Combine multiple PDF files into one organized document. This is useful for applications, reports, contracts, receipts, school work, and any task where several PDFs need to be submitted together."
+          steps={[
+            "Choose two or more PDF files.",
+            "Review the selected files and remove any you do not need.",
+            "Arrange the files in the order you want.",
+            "Click Merge PDF and download the combined document.",
+          ]}
+          benefits={[
+            "Keep related documents together in one PDF.",
+            "Make submissions and email attachments easier to manage.",
+            "Preserve the order of your selected files.",
+            "No registration is required.",
+          ]}
+        />
       </div>
     </main>
   );
