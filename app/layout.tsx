@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const siteUrl = "https://www.convertgeine.com";
@@ -110,6 +111,7 @@ export default function RootLayout({
     <html lang="en-CA">
       <body className="bg-slate-950 text-white antialiased">
         {children}
+        <Footer />
         <GoogleAnalytics gaId="G-8GQ346M0XB" />
       </body>
     </html>
