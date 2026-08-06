@@ -224,9 +224,9 @@ export default function Home() {
           </div>
 
           <h1 className="mt-8 text-5xl font-extrabold tracking-tight sm:text-6xl lg:text-7xl">
-            Finish everyday digital tasks
+            Free PDF Tools, Image Converter & Online Calculators
             <span className="mt-2 block text-blue-500">
-              quickly and simply
+              Fast, Secure & Free
             </span>
           </h1>
 
