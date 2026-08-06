@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ToolFeatures from "@/components/tool/ToolFeatures";
 
 type Props = {
   title: string;
@@ -47,6 +48,8 @@ export default function PdfLayout({
           </div>
 
         </section>
+
+        <ToolFeatures />
 
       </div>
     </main>
