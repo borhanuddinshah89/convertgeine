@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ToolFeatures from "@/components/tool/ToolFeatures";
+import ToolFaq from "@/components/tool/ToolFaq";
 
 type Props = {
   title: string;
@@ -50,6 +51,8 @@ export default function PdfLayout({
         </section>
 
         <ToolFeatures />
+
+        <ToolFaq tool={title} />
 
       </div>
     </main>
