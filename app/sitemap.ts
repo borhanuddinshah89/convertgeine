@@ -40,6 +40,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/kg-to-pounds",
     "/km-to-miles",
     "/inches-to-cm",
+    "/watermark-pdf",
+    "/delete-pdf-pages",
+    "/extract-pdf-pages",
+    "/page-number-pdf",
+    "/jpg-to-png",
     "/temperature-converter",
   ];
 

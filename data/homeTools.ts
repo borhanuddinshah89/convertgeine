@@ -62,6 +62,30 @@ export const categories: HomeCategory[] = [
         icon: "✏️",
         href: "/pdf-editor",
       },
+      {
+        title: "Add Page Numbers",
+        description: "Add page numbers to PDF documents.",
+        icon: "🔢",
+        href: "/page-number-pdf",
+      },
+      {
+        title: "Extract PDF Pages",
+        description: "Create a new PDF from selected pages.",
+        icon: "📤",
+        href: "/extract-pdf-pages",
+      },
+      {
+        title: "Delete PDF Pages",
+        description: "Remove unwanted pages from a PDF.",
+        icon: "🗑️",
+        href: "/delete-pdf-pages",
+      },
+      {
+        title: "Watermark PDF",
+        description: "Add custom text watermarks to PDF files.",
+        icon: "💧",
+        href: "/watermark-pdf",
+      },
     ],
   },
 
@@ -106,6 +130,12 @@ export const categories: HomeCategory[] = [
         description: "Create website favicon files from an image.",
         icon: "🌐",
         href: "/favicon-generator",
+      },
+      {
+        title: "JPG to PNG",
+        description: "Convert JPG and JPEG images to PNG.",
+        icon: "🖼️",
+        href: "/jpg-to-png",
       },
     ],
   },
