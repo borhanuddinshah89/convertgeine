@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import ToolSeoSection from "@/components/ToolSeoSection";
 import {
   ChangeEvent,
   useEffect,
@@ -1127,6 +1128,23 @@ export default function PassportPhotoPage() {
             </p>
           </div>
         </div>
+
+        <ToolSeoSection
+          tool="Passport Photo Maker"
+          description="Crop and resize JPG or PNG photos using presets for Canadian, United States, Bangladesh, and standard passport-photo dimensions. Automatic face positioning helps prepare a cleaner preview, but official requirements must always be checked before submission."
+          steps={[
+            "Choose a JPG or PNG photo.",
+            "Select the passport or document-photo preset you need.",
+            "Adjust zoom and position, or use automatic face detection.",
+            "Review the preview and download the finished JPG.",
+          ]}
+          benefits={[
+            "Prepare common passport-photo dimensions from your own device.",
+            "Use automatic face positioning with manual adjustment controls.",
+            "Download a clean image without preview guides.",
+            "Process the photo directly in your browser.",
+          ]}
+        />
       </div>
     </main>
   );
