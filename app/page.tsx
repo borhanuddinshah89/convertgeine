@@ -162,6 +162,13 @@ const popularTools = [
     href: "/image-compressor",
     },
   {
+    title: "Barcode Generator",
+    description: "Generate CODE128, EAN, UPC and other barcode formats.",
+    href: "/barcode-generator",
+    icon: "▥",
+    category: "Converters",
+  },
+  {
     title: "QR Code Generator",
     description: "Create QR codes for URLs, text, Wi-Fi, email, and phone numbers.",
     href: "/qr-code-generator",
