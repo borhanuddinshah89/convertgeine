@@ -9,6 +9,7 @@ import {
   useState,
 } from "react";
 import { PDFDocument } from "pdf-lib";
+import ToolSeoSection from "@/components/ToolSeoSection";
 
 type CompressionLevel = "maximum" | "balanced" | "quality";
 
@@ -560,6 +561,23 @@ export default function CompressPdfPage() {
             </div>
           </div>
         </section>
+
+        <ToolSeoSection
+          tool="PDF Compressor"
+          description="Reduce the file size of scanned and image-heavy PDF documents directly in your browser. Choose a compression level based on whether you prefer the smallest file or sharper page quality."
+          steps={[
+            "Choose a PDF file up to 25 MB.",
+            "Select Maximum, Balanced, or Best Quality compression.",
+            "Click Compress PDF and wait for processing to finish.",
+            "Download the compressed PDF and review the size reduction.",
+          ]}
+          benefits={[
+            "Make PDF files easier to email and upload.",
+            "Choose the balance between smaller size and clearer pages.",
+            "Process files privately in your browser.",
+            "Keep the original file when compression would make it larger.",
+          ]}
+        />
       </div>
     </main>
   );
