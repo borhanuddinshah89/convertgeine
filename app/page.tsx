@@ -162,6 +162,13 @@ const popularTools = [
     href: "/image-compressor",
     },
   {
+    title: "QR Code Generator",
+    description: "Create QR codes for URLs, text, Wi-Fi, email, and phone numbers.",
+    href: "/qr-code-generator",
+    icon: "▦",
+    category: "Converters",
+  },
+  {
     title: "Image Resizer",
     description: "Resize JPG, PNG, and WebP images by width and height.",
     href: "/image-resizer",
