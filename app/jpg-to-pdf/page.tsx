@@ -2,6 +2,7 @@
 
 import { ChangeEvent, useState } from "react";
 import Link from "next/link";
+import ToolSeoSection from "@/components/ToolSeoSection";
 
 function formatFileSize(bytes: number) {
   if (bytes < 1024) return `${bytes} B`;
@@ -185,6 +186,23 @@ export default function JpgToPdfPage() {
             </p>
           )}
         </div>
+
+        <ToolSeoSection
+          tool="JPG to PDF Converter"
+          description="Combine JPG and PNG images into one PDF document online. This is useful for applications, receipts, scanned pages, photos, and documents that need to be shared as a single file."
+          steps={[
+            "Choose one or more JPG or PNG images.",
+            "Review the selected images and remove any you do not need.",
+            "Click Create PDF.",
+            "Download the finished PDF to your device.",
+          ]}
+          benefits={[
+            "Combine multiple images into one organized PDF.",
+            "Create files that are easier to email and submit.",
+            "Use the tool on desktop, tablet, or mobile.",
+            "No registration is required.",
+          ]}
+        />
       </div>
     </main>
   );
