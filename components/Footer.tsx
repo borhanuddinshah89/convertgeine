@@ -36,6 +36,7 @@ export default function Footer() {
 
           <div className="mt-4 space-y-3 text-sm text-slate-400">
             <p><Link href="/passport-photo" className="hover:text-white">Passport Photo</Link></p>
+            <p><Link href="/image-compressor" className="hover:text-white">Image Compressor</Link></p>
             <p><Link href="/age-calculator" className="hover:text-white">Age Calculator</Link></p>
             <p><Link href="/bmi-calculator" className="hover:text-white">BMI Calculator</Link></p>
             <p><Link href="/percentage-calculator" className="hover:text-white">Percentage Calculator</Link></p>

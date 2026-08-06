@@ -157,6 +157,13 @@ const popularTools = [
     href: "/compress-pdf",
   },
   {
+    title: "Image Compressor",
+    description: "Reduce JPG, PNG, and WebP image file sizes online.",
+    href: "/image-compressor",
+    icon: "🗜️",
+    category: "Photos",
+  },
+  {
     title: "Passport Photo",
     description: "Prepare a clean photo using common official dimensions.",
     icon: "🪪",
