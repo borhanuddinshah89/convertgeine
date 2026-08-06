@@ -14,9 +14,7 @@ const sections = [
   },
   {
     title: "Photo Tools",
-    links: [
-      ["Passport Photo", "/passport-photo"],
-    ],
+    links: [["Passport Photo", "/passport-photo"]],
   },
   {
     title: "Calculators",
@@ -28,12 +26,22 @@ const sections = [
     ],
   },
   {
+    title: "Unit Converters",
+    links: [
+      ["CM to Feet", "/cm-to-feet"],
+      ["Inches to CM", "/inches-to-cm"],
+      ["KG to Pounds", "/kg-to-pounds"],
+      ["KM to Miles", "/km-to-miles"],
+      ["Temperature Converter", "/temperature-converter"],
+    ],
+  },
+  {
     title: "Company",
     links: [
       ["About", "/about"],
       ["Contact", "/contact"],
       ["Privacy Policy", "/privacy"],
-      ["Terms", "/terms"],
+      ["Terms of Use", "/terms"],
       ["Cookie Policy", "/cookies"],
     ],
   },
@@ -43,10 +51,17 @@ export default function SitemapPage() {
   return (
     <main className="min-h-screen bg-slate-950 px-6 py-16 text-white">
       <div className="mx-auto max-w-6xl">
-        <h1 className="text-5xl font-bold">HTML Sitemap</h1>
+        <Link
+          href="/"
+          className="text-sm font-medium text-blue-400 hover:text-blue-300"
+        >
+          ← Back to home
+        </Link>
 
-        <p className="mt-4 text-slate-400">
-          Browse every tool and page available on ConvertGeine.
+        <h1 className="mt-8 text-5xl font-bold">HTML Sitemap</h1>
+
+        <p className="mt-4 max-w-2xl text-slate-400">
+          Browse all tools and important pages available on ConvertGeine.
         </p>
 
         <div className="mt-12 grid gap-10 md:grid-cols-2">
@@ -59,7 +74,7 @@ export default function SitemapPage() {
                   <Link
                     key={href}
                     href={href}
-                    className="block rounded-lg border border-slate-800 bg-slate-900 px-4 py-3 hover:border-blue-500"
+                    className="block rounded-lg border border-slate-800 bg-slate-900 px-4 py-3 transition hover:border-blue-500 hover:bg-slate-800"
                   >
                     {name}
                   </Link>
