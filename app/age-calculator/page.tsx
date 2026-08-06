@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import ToolSeoSection from "@/components/ToolSeoSection";
 
 export default function AgeCalculatorPage() {
   const today = new Date().toISOString().split("T")[0];
@@ -182,6 +183,22 @@ export default function AgeCalculatorPage() {
           )}
 
         </div>
+        <ToolSeoSection
+          tool="Age Calculator"
+          description="Calculate your exact age in years, months, and days from your date of birth. You can also use it to find the time between two selected dates."
+          steps={[
+            "Enter your date of birth.",
+            "Choose the date on which you want to calculate your age.",
+            "Click the calculate button.",
+            "Review your age in years, months, and days.",
+          ]}
+          benefits={[
+            "Find an exact age for forms and applications.",
+            "Calculate the difference between two dates.",
+            "Use the calculator instantly without registration.",
+            "Works on phones, tablets, and computers.",
+          ]}
+        />
       </div>
     </main>
   );
