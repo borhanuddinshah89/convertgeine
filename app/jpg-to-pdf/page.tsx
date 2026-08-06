@@ -96,10 +96,10 @@ export default function JpgToPdfPage() {
           <div className="text-center">
             <div className="text-5xl">📄</div>
 
-            <h1 className="mt-4 text-4xl font-bold">JPG to PDF</h1>
+            <h1 className="mt-4 text-4xl font-bold">Free JPG to PDF Converter</h1>
 
             <p className="mt-3 text-slate-400">
-              Combine JPG and PNG images into one PDF document.
+              Convert JPG and PNG images into one PDF online for free. No registration required.
             </p>
           </div>
 
