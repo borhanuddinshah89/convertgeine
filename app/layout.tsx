@@ -5,13 +5,13 @@ import "./globals.css";
 const siteUrl = "https://www.convertgeine.com";
 const siteName = "ConvertGeine";
 const siteDescription =
-  "Free online PDF, photo, calculator and unit converter tools. Compress, merge, split and edit PDFs, prepare passport photos, and complete everyday digital tasks.";
+  "Use free online tools to compress, merge, split and convert PDFs, create passport photos, calculate BMI and age, and convert units. No registration required.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 
   title: {
-    default: "ConvertGeine | Free PDF, Photo & Calculator Tools",
+    default: "Free PDF, Image & Calculator Tools | ConvertGeine",
     template: "%s | ConvertGeine",
   },
 
@@ -69,13 +69,13 @@ export const metadata: Metadata = {
     locale: "en_CA",
     url: siteUrl,
     siteName,
-    title: "ConvertGeine | Free PDF, Photo & Calculator Tools",
+    title: "Free PDF, Image & Calculator Tools | ConvertGeine",
     description: siteDescription,
   },
 
   twitter: {
     card: "summary",
-    title: "ConvertGeine | Free PDF, Photo & Calculator Tools",
+    title: "Free PDF, Image & Calculator Tools | ConvertGeine",
     description: siteDescription,
   },
 
