@@ -4,6 +4,7 @@ import { ChangeEvent, useState } from "react";
 import Link from "next/link";
 import ToolSeoSection from "@/components/ToolSeoSection";
 import RelatedTools from "@/components/RelatedTools";
+import { trackToolEvent } from "@/lib/analytics";
 
 function formatFileSize(bytes: number) {
   if (bytes < 1024) return `${bytes} B`;
@@ -45,6 +46,7 @@ export default function JpgToPdfPage() {
 
     setLoading(true);
     setMessage("Creating your PDF...");
+    trackToolEvent("tool_start", "jpg_to_pdf", { file_count: files.length });
 
     try {
       const formData = new FormData();
@@ -75,7 +77,9 @@ export default function JpgToPdfPage() {
 
       URL.revokeObjectURL(url);
       setMessage("Finished! Your PDF was downloaded.");
+      trackToolEvent("tool_complete", "jpg_to_pdf", { file_count: files.length });
     } catch (error) {
+      trackToolEvent("tool_error", "jpg_to_pdf");
       setMessage(
         error instanceof Error ? error.message : "Conversion failed."
       );

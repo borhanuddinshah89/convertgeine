@@ -50,10 +50,6 @@ export const metadata: Metadata = {
   creator: "ConvertGeine",
   publisher: "ConvertGeine",
 
-  alternates: {
-    canonical: "/",
-  },
-
   icons: {
     icon: [
       {

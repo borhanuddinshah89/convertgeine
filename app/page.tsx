@@ -1,10 +1,17 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import Logo from "@/components/Logo";
 import Hero from "@/components/home/Hero";
-import HomeHero from "@/components/home/HomeHero";
 import PopularTools from "@/components/home/PopularTools";
 import ToolCategories from "@/components/home/ToolCategories";
 import RecentlyAdded from "@/components/home/RecentlyAdded";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   return (
@@ -29,9 +36,9 @@ export default function Home() {
             <a href="#utilities" className="hover:text-white">
               Utilities
             </a>
-            <a href="/blog" className="hover:text-white">
+            <Link href="/blog" className="hover:text-white">
               Guides
-            </a>
+            </Link>
           </nav>
 
           <a

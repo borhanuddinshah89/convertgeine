@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import ToolSeoSection from "@/components/ToolSeoSection";
 import RelatedTools from "@/components/RelatedTools";
+import { trackToolEvent } from "@/lib/analytics";
 import PdfUploader from "../../components/PdfUploader";
 
 export default function MergePdfPage() {
@@ -19,6 +20,7 @@ export default function MergePdfPage() {
 
     setLoading(true);
     setMessage("Merging your PDFs...");
+    trackToolEvent("tool_start", "merge_pdf", { file_count: files.length });
 
     try {
       const form = new FormData();
@@ -63,7 +65,9 @@ export default function MergePdfPage() {
       URL.revokeObjectURL(url);
 
       setMessage("Finished! Your merged PDF was downloaded.");
+      trackToolEvent("tool_complete", "merge_pdf", { file_count: files.length });
     } catch (error) {
+      trackToolEvent("tool_error", "merge_pdf");
       setMessage(
         error instanceof Error ? error.message : "Merge failed."
       );

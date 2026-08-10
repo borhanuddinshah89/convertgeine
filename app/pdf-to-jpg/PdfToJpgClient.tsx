@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import ToolSeoSection from "@/components/ToolSeoSection";
 import RelatedTools from "@/components/RelatedTools";
+import { trackToolEvent } from "@/lib/analytics";
 import PdfUploader from "../../components/PdfUploader";
 
 export default function PdfToJpgPage() {
@@ -21,6 +22,7 @@ export default function PdfToJpgPage() {
 
     setLoading(true);
     setMessage("Converting PDF pages to JPG...");
+    trackToolEvent("tool_start", "pdf_to_jpg");
 
     try {
       const formData = new FormData();
@@ -48,7 +50,9 @@ export default function PdfToJpgPage() {
 
       URL.revokeObjectURL(url);
       setMessage("Finished! Your JPG images were downloaded.");
+      trackToolEvent("tool_complete", "pdf_to_jpg");
     } catch (error) {
+      trackToolEvent("tool_error", "pdf_to_jpg");
       setMessage(
         error instanceof Error ? error.message : "Conversion failed."
       );
