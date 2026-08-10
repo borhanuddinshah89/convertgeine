@@ -533,29 +533,45 @@ export const blogArticles: BlogArticle[] = [
 
   {
     slug: "jpg-to-pdf-guide",
-    title: "How to Convert JPG Images to One PDF",
+    title: "How to Combine Phone Photos Into One PDF",
     description:
-      "Combine photographs, scans, receipts, or screenshots into a PDF document.",
+      "Turn multiple phone photos, scans, receipts, or application documents into one organized PDF in the correct order.",
     toolHref: "/jpg-to-pdf",
     toolLabel: "JPG to PDF",
     sections: [
       {
-        heading: "Why turn images into a PDF?",
+        heading: "Why combine phone photos into one PDF?",
         paragraphs: [
-          "PDF is often easier to submit than a collection of separate photographs. Multiple scans, receipts, certificates, or screenshots can be kept in one ordered document.",
+          "PDF is often easier to submit than a collection of separate photographs. Multiple scans, receipts, certificates, application documents, or screenshots can be kept in one ordered file.",
+          "A single PDF is also easier for the recipient to download, review, print, and store. It reduces the chance that an individual image will be missed when several supporting documents must be submitted together."
         ],
       },
       {
-        heading: "Combine images in the right order",
+        heading: "How to turn JPG and PNG images into one PDF",
         paragraphs: [
-          "Select the images, arrange them correctly, create the PDF, and download the result.",
-          "Before submitting it, open the PDF and confirm that every image is readable and appears in the correct sequence."
+          "Open the ConvertGeine JPG to PDF converter and select up to 20 JPG or PNG images. Use the arrow controls to arrange them in the order you want the pages to appear, then create and download the PDF.",
+          "The converter places each image on its own A4-size page while keeping the original proportions. Before submitting the file, open it and confirm that every page is readable and appears in the correct sequence."
         ],
       },
       {
-        heading: "Use clear source images",
+        heading: "Prepare clear photos of documents",
         paragraphs: [
-          "Converting a blurry photograph into PDF will not make the source clearer. Start with properly focused and well-lit images whenever possible."
+          "Place each paper on a flat surface with even lighting. Hold the phone directly above the page, keep all four corners visible, and check that names, dates, signatures, and identification numbers are readable.",
+          "Converting a blurry photograph into PDF will not make the source clearer. Retake unclear or shadowed images before creating the final document."
+        ],
+      },
+      {
+        heading: "Choose the correct page order for applications",
+        paragraphs: [
+          "Put the main form or requested document first, followed by identification and supporting evidence. For receipts or statements, chronological order is usually easiest to review.",
+          "Use descriptive filenames on your device before selecting the images if you have many similar photos. After downloading the PDF, give the finished file a clear name before uploading it to an application portal."
+        ],
+      },
+      {
+        heading: "Check the PDF before submitting it",
+        paragraphs: [
+          "Open the downloaded PDF and inspect the first page, last page, and any page containing important details. Confirm that no image is upside down, cropped, duplicated, or missing.",
+          "If an upload portal has a file-size limit, use the ConvertGeine Compress PDF tool after creating the document. Keep the original PDF until the submission has been accepted."
         ],
       },
     ],
@@ -569,6 +585,16 @@ export const blogArticles: BlogArticle[] = [
         question: "Can PNG images also be added?",
         answer:
           "The ConvertGeine JPG to PDF workflow also supports compatible PNG images.",
+      },
+      {
+        question: "How many images can I combine?",
+        answer:
+          "You can combine up to 20 JPG or PNG images in one conversion, with a maximum size of 15 MB per image.",
+      },
+      {
+        question: "Can I change the PDF page order?",
+        answer:
+          "Yes. Use the up and down arrows beside each selected image before creating the PDF.",
       },
     ],
   },

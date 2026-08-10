@@ -260,6 +260,12 @@ export default function JpgToPdfPage() {
               Each image becomes one A4-size PDF page and is scaled to fit without stretching. Portrait and landscape images keep their original proportions, and the order shown above becomes the page order in the downloaded PDF.
             </p>
           </div>
+          <Link
+            href="/blog/jpg-to-pdf-guide"
+            className="mt-6 inline-flex font-semibold text-blue-400 hover:text-blue-300"
+          >
+            Read the step-by-step phone photos to PDF guide →
+          </Link>
         </section>
         <RelatedTools
           title="Related PDF Tools"
