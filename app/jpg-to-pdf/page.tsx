@@ -27,8 +27,12 @@ export default function JpgToPdfPage() {
         file.name.toLowerCase().endsWith(".png")
     );
 
-    setFiles(selectedFiles);
-    setMessage("");
+    setFiles((currentFiles) => [...currentFiles, ...selectedFiles].slice(0, 20));
+    setMessage(
+      files.length + selectedFiles.length > 20
+        ? "A maximum of 20 images can be included in one PDF."
+        : ""
+    );
     event.target.value = "";
   }
 
@@ -36,6 +40,20 @@ export default function JpgToPdfPage() {
     setFiles((currentFiles) =>
       currentFiles.filter((_, index) => index !== indexToRemove)
     );
+  }
+
+  function moveFile(index: number, direction: -1 | 1) {
+    const newIndex = index + direction;
+    if (newIndex < 0 || newIndex >= files.length) return;
+
+    setFiles((currentFiles) => {
+      const reordered = [...currentFiles];
+      [reordered[index], reordered[newIndex]] = [
+        reordered[newIndex],
+        reordered[index],
+      ];
+      return reordered;
+    });
   }
 
   async function convertToPdf() {
@@ -105,7 +123,7 @@ export default function JpgToPdfPage() {
             <h1 className="mt-4 text-4xl font-bold">Free JPG to PDF Converter</h1>
 
             <p className="mt-3 text-slate-400">
-              Convert JPG and PNG images into one PDF online for free. No registration required.
+              Combine up to 20 JPG and PNG images into one PDF in the order you choose. No registration required.
             </p>
           </div>
 
@@ -127,7 +145,7 @@ export default function JpgToPdfPage() {
             </label>
 
             <p className="mt-4 text-sm text-slate-400">
-              JPG and PNG only
+              JPG and PNG · Up to 20 images · Maximum 15 MB each
             </p>
           </div>
 
@@ -160,6 +178,27 @@ export default function JpgToPdfPage() {
                       <p className="mt-1 text-xs text-slate-500">
                         {formatFileSize(file.size)}
                       </p>
+                    </div>
+
+                    <div className="flex gap-1" aria-label={`Change the order of ${file.name}`}>
+                      <button
+                        type="button"
+                        onClick={() => moveFile(index, -1)}
+                        disabled={index === 0}
+                        className="rounded-lg px-2 py-2 text-slate-300 hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-30"
+                        aria-label={`Move ${file.name} up`}
+                      >
+                        ↑
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => moveFile(index, 1)}
+                        disabled={index === files.length - 1}
+                        className="rounded-lg px-2 py-2 text-slate-300 hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-30"
+                        aria-label={`Move ${file.name} down`}
+                      >
+                        ↓
+                      </button>
                     </div>
 
                     <button
@@ -197,7 +236,8 @@ export default function JpgToPdfPage() {
           description="Combine JPG and PNG images into one PDF document online. This is useful for applications, receipts, scanned pages, photos, and documents that need to be shared as a single file."
           steps={[
             "Choose one or more JPG or PNG images.",
-            "Review the selected images and remove any you do not need.",
+            "Use the arrow buttons to arrange the images in your preferred page order.",
+            "Review the list and remove any images you do not need.",
             "Click Create PDF.",
             "Download the finished PDF to your device.",
           ]}
@@ -207,7 +247,20 @@ export default function JpgToPdfPage() {
             "Use the tool on desktop, tablet, or mobile.",
             "No registration is required.",
           ]}
+          fileHandling="Your selected images are sent securely to the conversion service only to create the PDF. ConvertGeine does not intentionally store the uploaded images or finished document."
         />
+
+        <section className="mt-12 rounded-2xl border border-slate-800 bg-slate-900 p-8">
+          <h2 className="text-2xl font-bold">Turn photos and scans into one organized PDF</h2>
+          <div className="mt-4 space-y-4 leading-7 text-slate-300">
+            <p>
+              A single PDF is easier to upload, email and review than a folder of separate images. Use this converter for photographed forms, receipts, class notes, application documents and scanned pages.
+            </p>
+            <p>
+              Each image becomes one A4-size PDF page and is scaled to fit without stretching. Portrait and landscape images keep their original proportions, and the order shown above becomes the page order in the downloaded PDF.
+            </p>
+          </div>
+        </section>
         <RelatedTools
           title="Related PDF Tools"
           tools={[

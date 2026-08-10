@@ -3,6 +3,7 @@ type Props = {
   description: string;
   steps: string[];
   benefits: string[];
+  fileHandling?: string;
 };
 
 export default function ToolSeoSection({
@@ -10,6 +11,7 @@ export default function ToolSeoSection({
   description,
   steps,
   benefits,
+  fileHandling = "Your files stay on your device unless a tool clearly states otherwise.",
 }: Props) {
   return (
     <section className="mt-16 space-y-10 border-t border-slate-800 pt-12">
@@ -69,8 +71,7 @@ export default function ToolSeoSection({
             </h3>
 
             <p className="mt-2 text-slate-300">
-              Your files stay on your device unless a tool clearly states
-              otherwise.
+              {fileHandling}
             </p>
           </div>
 
