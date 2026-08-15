@@ -32,11 +32,34 @@ export default function JpgToPdfLayout({
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   };
 
+  const breadcrumbList = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.convertgeine.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "JPG to PDF Converter",
+        item: "https://www.convertgeine.com/jpg-to-pdf",
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplication) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbList) }}
       />
       {children}
     </>

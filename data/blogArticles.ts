@@ -600,6 +600,74 @@ export const blogArticles: BlogArticle[] = [
   },
 
   {
+    slug: "scan-documents-with-phone-to-pdf",
+    title: "How to Scan Documents With Your Phone and Save Them as a PDF",
+    description:
+      "Photograph paper documents clearly, arrange the pages, and save them as one PDF for email or an online application.",
+    toolHref: "/jpg-to-pdf",
+    toolLabel: "JPG to PDF",
+    sections: [
+      {
+        heading: "Prepare the document before taking photos",
+        paragraphs: [
+          "Place the document on a flat surface in bright, even light. Smooth folded corners and remove anything covering the page. A plain background that contrasts with the paper makes the page edges easier to see.",
+          "Avoid direct glare from a lamp or window, especially on identification cards and glossy pages. If a shadow crosses the document, move the light or your phone before taking the picture."
+        ],
+      },
+      {
+        heading: "Take a clear picture of every page",
+        paragraphs: [
+          "Hold the phone directly above the paper instead of photographing it from an angle. Keep all four corners inside the frame and tap the document on screen so the camera focuses on the text.",
+          "Review each image at full size before continuing. Names, dates, signatures, stamps, and small print should be readable. Retake any page that is blurry, dark, cropped, or covered by glare."
+        ],
+      },
+      {
+        heading: "Combine the document photos into one PDF",
+        paragraphs: [
+          "Open the ConvertGeine JPG to PDF converter and choose the document photos from your device. JPG, JPEG, and compatible PNG images can be added to the same PDF.",
+          "Use the arrow buttons to put the images in the correct page order. The first image in the list becomes the first page of the PDF. Remove accidental duplicates before creating the file."
+        ],
+      },
+      {
+        heading: "Check the finished PDF before sending it",
+        paragraphs: [
+          "Open the downloaded PDF and inspect every page. Confirm that the pages are upright, complete, readable, and in the correct order. Give the file a clear name that describes the document.",
+          "If a website has an upload-size limit, compress the completed PDF only after checking the original. Keep the original file until the recipient or application portal confirms that the document was received."
+        ],
+      },
+      {
+        heading: "Protect sensitive documents",
+        paragraphs: [
+          "Only send identity, financial, immigration, employment, or medical documents to a recipient you trust. Check the website address and recipient email carefully before uploading or attaching the PDF.",
+          "Delete unnecessary copies from shared devices and public computers. ConvertGeine processes selected images to create the requested PDF and does not intentionally keep the uploaded images or finished document."
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Can I turn phone pictures into one PDF?",
+        answer:
+          "Yes. Choose the document photos, arrange them in page order, and create one PDF containing all selected images.",
+      },
+      {
+        question: "Can I combine JPG and PNG pages in the same PDF?",
+        answer:
+          "Yes. The ConvertGeine JPG to PDF tool accepts compatible JPG, JPEG, and PNG images in one conversion.",
+      },
+      {
+        question: "How do I make a photographed document easier to read?",
+        answer:
+          "Use bright even lighting, hold the phone parallel to the page, include all four corners, focus on the text, and retake any blurry or shadowed image.",
+      },
+      {
+        question: "Should I check the PDF before uploading it?",
+        answer:
+          "Yes. Open the finished PDF and verify that every page is readable, upright, complete, and in the correct order.",
+      },
+    ],
+  },
+
+  {
     slug: "webp-vs-jpg-vs-png",
     title: "WebP vs JPG vs PNG: Which Image Format Should You Use?",
     description:

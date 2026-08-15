@@ -51,6 +51,11 @@ export default async function BlogArticlePage({
 
   const related = blogArticles
     .filter((item) => item.slug !== article.slug)
+    .sort((a, b) => {
+      const aMatchesTool = a.toolHref === article.toolHref ? 1 : 0;
+      const bMatchesTool = b.toolHref === article.toolHref ? 1 : 0;
+      return bMatchesTool - aMatchesTool;
+    })
     .slice(0, 3);
 
   const articleSchema = {

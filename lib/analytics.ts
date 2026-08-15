@@ -1,7 +1,11 @@
 type EventParameters = Record<string, string | number | boolean>;
 
 export function trackToolEvent(
-  action: "tool_start" | "tool_complete" | "tool_error",
+  action:
+    | "tool_file_selected"
+    | "tool_start"
+    | "tool_complete"
+    | "tool_error",
   tool: string,
   parameters: EventParameters = {}
 ) {

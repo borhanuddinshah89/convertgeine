@@ -33,6 +33,12 @@ export default function JpgToPdfPage() {
         ? "A maximum of 20 images can be included in one PDF."
         : ""
     );
+    if (selectedFiles.length > 0) {
+      trackToolEvent("tool_file_selected", "jpg_to_pdf", {
+        selected_count: selectedFiles.length,
+        total_count: Math.min(files.length + selectedFiles.length, 20),
+      });
+    }
     event.target.value = "";
   }
 
@@ -260,12 +266,20 @@ export default function JpgToPdfPage() {
               Each image becomes one A4-size PDF page and is scaled to fit without stretching. Portrait and landscape images keep their original proportions, and the order shown above becomes the page order in the downloaded PDF.
             </p>
           </div>
-          <Link
-            href="/blog/jpg-to-pdf-guide"
-            className="mt-6 inline-flex font-semibold text-blue-400 hover:text-blue-300"
-          >
-            Read the step-by-step phone photos to PDF guide →
-          </Link>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:gap-6">
+            <Link
+              href="/blog/jpg-to-pdf-guide"
+              className="font-semibold text-blue-400 hover:text-blue-300"
+            >
+              Combine phone photos into one PDF →
+            </Link>
+            <Link
+              href="/blog/scan-documents-with-phone-to-pdf"
+              className="font-semibold text-blue-400 hover:text-blue-300"
+            >
+              Scan a document with your phone →
+            </Link>
+          </div>
         </section>
         <RelatedTools
           title="Related PDF Tools"
