@@ -90,7 +90,7 @@ export const blogArticles: BlogArticle[] = [
     slug: "how-to-merge-pdf",
     title: "How to Merge PDF Files Into One Document",
     description:
-      "Combine multiple PDF files into one organized document using a simple online workflow.",
+      "Learn how to combine PDF files in the right order, check the finished document, and prepare one organized PDF for sharing or submission.",
     toolHref: "/merge-pdf",
     toolLabel: "Merge PDF",
     sections: [
@@ -102,10 +102,10 @@ export const blogArticles: BlogArticle[] = [
         ],
       },
       {
-        heading: "How to combine PDF files",
+        heading: "How to combine PDF files in the correct order",
         paragraphs: [
-          "Open the ConvertGeine Merge PDF tool, choose the documents you want to combine, arrange them in the correct order, and create the merged PDF.",
-          "After downloading the result, quickly check the first and last pages to make sure the documents appear in the intended order."
+          "Open the ConvertGeine Merge PDF tool and choose between two and ten documents. The tool combines them in the order they are selected, so choose the first document first and continue in sequence.",
+          "If the displayed list is not correct, remove the files and select them again in the intended order. Then create and download the merged PDF."
         ],
       },
       {
@@ -113,6 +113,27 @@ export const blogArticles: BlogArticle[] = [
         paragraphs: [
           "Rename files or place them in the intended order before starting. For an application package, for example, you might place the application form first, followed by identification, supporting letters, statements, and receipts.",
           "A logical page order makes the final PDF easier to review."
+        ],
+      },
+      {
+        heading: "Check the merged PDF before sending it",
+        paragraphs: [
+          "Open the downloaded file and inspect the first page, last page, and every transition between the original documents. Confirm that no document is missing and that the total page count makes sense.",
+          "Also check rotated scans, blank pages, and pages that are difficult to read. The merge process joins the existing pages; it does not correct the contents of the source documents."
+        ],
+      },
+      {
+        heading: "How to handle a merged PDF that is too large",
+        paragraphs: [
+          "Combining several scanned or image-heavy documents can create a large final PDF. If an email service or upload form rejects it, compress the merged document after confirming its page order.",
+          "Keep an uncompressed copy when print quality or small text matters, then compare the compressed result before submitting it."
+        ],
+      },
+      {
+        heading: "Privacy and file handling",
+        paragraphs: [
+          "ConvertGeine sends the selected PDFs securely to its merge service to create the combined file, and the tool does not require an account.",
+          "Avoid uploading documents you are not authorized to process. After downloading, store or delete the merged file according to the privacy requirements of the records it contains."
         ],
       },
     ],
@@ -126,6 +147,21 @@ export const blogArticles: BlogArticle[] = [
         question: "Does merging PDFs change the original files?",
         answer:
           "The merged output is a new document, so you can keep your original PDFs separately.",
+      },
+      {
+        question: "What order will the merged PDF pages follow?",
+        answer:
+          "ConvertGeine adds every page from the first selected PDF, then every page from the next PDF, continuing in the order shown in the selected-files list.",
+      },
+      {
+        question: "How many PDF files can I merge?",
+        answer:
+          "You can select and combine up to 10 PDF files at a time.",
+      },
+      {
+        question: "Are my PDF files uploaded?",
+        answer:
+          "Yes. The selected PDFs are sent securely to the merge service only to create the combined document. ConvertGeine does not intentionally retain the uploaded files or merged download.",
       },
     ],
   },
