@@ -2,16 +2,16 @@ import type { Metadata } from "next";
 import PdfToJpgClient from "./PdfToJpgClient";
 
 export const metadata: Metadata = {
-  title: "PDF to JPG Converter Online Free | ConvertGeine",
+  title: "PDF to JPG Converter — Save Every Page as an Image",
   description:
-    "Convert PDF pages to JPG images online for free. Fast conversion with no signup required.",
+    "Convert every PDF page to a clear JPG image and download the results in one ZIP file. Free, mobile-friendly, and no registration required.",
   alternates: {
     canonical: "https://www.convertgeine.com/pdf-to-jpg",
   },
   openGraph: {
-    title: "PDF to JPG Converter Online Free | ConvertGeine",
+    title: "Free PDF to JPG Converter Online | ConvertGeine",
     description:
-      "Turn PDF pages into JPG images online for free. Fast and easy to use.",
+      "Turn every PDF page into a downloadable JPG image. Free and easy to use on desktop or mobile.",
     url: "https://www.convertgeine.com/pdf-to-jpg",
     siteName: "ConvertGeine",
     type: "website",
