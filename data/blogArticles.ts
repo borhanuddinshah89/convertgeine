@@ -19,9 +19,9 @@ export type BlogArticle = {
 export const blogArticles: BlogArticle[] = [
   {
     slug: "how-to-compress-pdf",
-    title: "How to Compress a PDF Without Losing Quality",
+    title: "How to Compress a PDF for Email and Online Uploads",
     description:
-      "Learn practical ways to reduce PDF file size while keeping text and images readable.",
+      "Learn how to reduce a PDF file size, choose a compression level, and check the result before emailing or uploading it.",
     toolHref: "/compress-pdf",
     toolLabel: "Compress PDF",
     sections: [
@@ -35,7 +35,8 @@ export const blogArticles: BlogArticle[] = [
       {
         heading: "How to compress a PDF online",
         paragraphs: [
-          "Choose your PDF in the ConvertGeine PDF compressor and start the compression process. When processing finishes, download the smaller version and open it once to confirm that the text and images still look acceptable.",
+          "Open the ConvertGeine PDF compressor and choose a PDF up to 25 MB. Select Maximum compression for the smallest result, Balanced for everyday documents, or Best Quality when sharper page images matter more than achieving the lowest possible size.",
+          "Start the compression process, download the result, and open it once to confirm that every page is present and readable. Compare the displayed original and final sizes to see whether compression helped.",
           "For important documents, keep the original file as a backup before replacing it with the compressed copy."
         ],
       },
@@ -44,6 +45,20 @@ export const blogArticles: BlogArticle[] = [
         paragraphs: [
           "The best file size depends on where the PDF will be used. Email attachments and online forms often have strict upload limits, while documents intended for printing may benefit from retaining more image quality.",
           "Aim for the smallest file that still keeps signatures, photographs, diagrams, and text clear enough for their intended use."
+        ],
+      },
+      {
+        heading: "Compressing scanned PDFs versus text PDFs",
+        paragraphs: [
+          "Scanned PDFs and photo-heavy documents often have the greatest potential for size reduction because each page contains substantial image data. A small PDF containing mostly efficient text and vector graphics may already be optimized and may not become smaller.",
+          "ConvertGeine rebuilds pages as compressed images. This can reduce scans effectively, but selectable text, form fields, links, and other interactive PDF features may be flattened. Keep the source document when those features are important."
+        ],
+      },
+      {
+        heading: "Check the compressed file before submitting it",
+        paragraphs: [
+          "Open the downloaded PDF and zoom in on small text, signatures, stamps, photographs, and identification numbers. Confirm that the page count and orientation are correct and that the final file is below the recipient's limit.",
+          "If the result is difficult to read, repeat the process with Balanced or Best Quality. If the file is still too large, Maximum compression may help, but readability should remain the priority for official applications and records."
         ],
       },
     ],
@@ -56,7 +71,17 @@ export const blogArticles: BlogArticle[] = [
       {
         question: "Can I compress a PDF for email?",
         answer:
-          "Yes. PDF compression is useful when an attachment exceeds an email provider's size limit.",
+          "Yes. PDF compression is useful when an attachment exceeds an email provider's limit. Check the new file size and open the result before sending it.",
+      },
+      {
+        question: "Why did my PDF not become smaller?",
+        answer:
+          "The PDF may already be optimized or may contain mostly efficient text and vector content. ConvertGeine preserves the original when recompressing would create a larger file.",
+      },
+      {
+        question: "Are my PDF files uploaded?",
+        answer:
+          "The ConvertGeine compressor processes the selected PDF in your browser. The tool does not need to upload the document to ConvertGeine for compression.",
       },
     ],
   },

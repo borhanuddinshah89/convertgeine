@@ -2,16 +2,16 @@ import type { Metadata } from "next";
 import CompressPdfClient from "./CompressPdfClient";
 
 export const metadata: Metadata = {
-  title: "Compress PDF Online Free | Reduce PDF File Size | ConvertGeine",
+  title: "Compress PDF Online — Reduce PDF File Size Free",
   description:
-    "Compress PDF files online for free. Reduce PDF file size directly in your browser with multiple compression levels. No signup required.",
+    "Compress a PDF online for free. Choose maximum, balanced, or best-quality compression to reduce scanned and image-heavy PDFs up to 25 MB.",
   alternates: {
     canonical: "https://www.convertgeine.com/compress-pdf",
   },
   openGraph: {
-    title: "Compress PDF Online Free | ConvertGeine",
+    title: "Compress PDF Online — Reduce PDF File Size Free",
     description:
-      "Reduce PDF file size online for free with multiple compression levels. Fast, browser-based and no signup required.",
+      "Reduce scanned and image-heavy PDF files with three compression levels. Free, private browser processing with no signup.",
     url: "https://www.convertgeine.com/compress-pdf",
     siteName: "ConvertGeine",
     type: "website",

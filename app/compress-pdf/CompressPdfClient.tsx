@@ -11,6 +11,7 @@ import {
 import { PDFDocument } from "pdf-lib";
 import ToolSeoSection from "@/components/ToolSeoSection";
 import RelatedTools from "@/components/RelatedTools";
+import { trackToolEvent } from "@/lib/analytics";
 
 type CompressionLevel = "maximum" | "balanced" | "quality";
 
@@ -145,6 +146,9 @@ export default function CompressPdfPage() {
       setFile(null);
       setMessage("Please choose a PDF file.");
       event.target.value = "";
+      trackToolEvent("tool_error", "compress_pdf", {
+        error_type: "invalid_file_type",
+      });
       return;
     }
 
@@ -152,6 +156,9 @@ export default function CompressPdfPage() {
       setFile(null);
       setMessage("The selected PDF is empty.");
       event.target.value = "";
+      trackToolEvent("tool_error", "compress_pdf", {
+        error_type: "empty_file",
+      });
       return;
     }
 
@@ -159,10 +166,18 @@ export default function CompressPdfPage() {
       setFile(null);
       setMessage("The PDF must be 25 MB or smaller.");
       event.target.value = "";
+      trackToolEvent("tool_error", "compress_pdf", {
+        error_type: "file_too_large",
+        file_size_bytes: selectedFile.size,
+      });
       return;
     }
 
     setFile(selectedFile);
+    trackToolEvent("tool_file_selected", "compress_pdf", {
+      file_count: 1,
+      file_size_bytes: selectedFile.size,
+    });
   }
 
   async function compressPdf() {
@@ -172,6 +187,12 @@ export default function CompressPdfPage() {
     setProgress(0);
     setMessage("Reading your PDF...");
     clearResult();
+
+    trackToolEvent("tool_start", "compress_pdf", {
+      file_count: 1,
+      file_size_bytes: file.size,
+      compression_level: level,
+    });
 
     try {
       const pdfjs = await import("pdfjs-dist");
@@ -308,6 +329,16 @@ export default function CompressPdfPage() {
         pages: sourcePdf.numPages,
       });
 
+      trackToolEvent("tool_complete", "compress_pdf", {
+        file_count: 1,
+        original_size_bytes: originalBytes.byteLength,
+        output_size_bytes: finalSize,
+        saved_percent: savedPercent,
+        page_count: sourcePdf.numPages,
+        compression_level: level,
+        compression_reduced_size: compressionWasUseful,
+      });
+
       if (compressionWasUseful) {
         setMessage(
           `Finished — your PDF is ${savedPercent}% smaller.`
@@ -319,6 +350,11 @@ export default function CompressPdfPage() {
       }
     } catch (error) {
       console.error("PDF compression failed:", error);
+
+      trackToolEvent("tool_error", "compress_pdf", {
+        error_type: "processing_failed",
+        compression_level: level,
+      });
 
       const errorMessage =
         error instanceof Error
@@ -369,12 +405,13 @@ export default function CompressPdfPage() {
             </div>
 
             <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-              Compress PDF
+              Compress PDF Online
             </h1>
 
             <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-slate-400 sm:text-base">
-              Reduce the size of scanned and image-heavy PDF files.
-              Processing happens privately in your browser.
+              Reduce scanned and image-heavy PDF file sizes for email,
+              online forms, and easier sharing. Choose your preferred
+              balance of size and clarity—no signup required.
             </p>
           </div>
 
@@ -579,6 +616,61 @@ export default function CompressPdfPage() {
             "Keep the original file when compression would make it larger.",
           ]}
         />
+        <section className="mt-10 space-y-8 rounded-3xl border border-slate-800 bg-slate-900 p-6 text-slate-300 sm:p-10">
+          <div>
+            <h2 className="text-2xl font-bold text-white">
+              Compress a PDF for email or online uploads
+            </h2>
+            <p className="mt-3 leading-7">
+              Large PDF attachments are commonly caused by scanned pages and
+              high-resolution images. Compressing those pages can make a
+              document easier to email or submit to a portal with a file-size
+              limit. ConvertGeine offers three levels so you can prioritize the
+              smallest download or retain sharper page images.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-white">
+              Which compression level should you choose?
+            </h2>
+            <p className="mt-3 leading-7">
+              Use Maximum compression when meeting a strict upload limit is
+              most important. Balanced is a sensible starting point for most
+              scanned documents. Best Quality creates clearer page images but
+              may produce a larger result. Always open the downloaded PDF and
+              check small text, signatures, and identification details before
+              submitting an important document.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-white">
+              What happens to text and images?
+            </h2>
+            <p className="mt-3 leading-7">
+              This compressor rebuilds each page as a compressed image. That
+              approach works especially well for scans and photo-heavy PDFs,
+              but selectable text and interactive elements may be flattened.
+              Keep your original file as a backup. For more guidance, read
+              our{" "}
+              <Link
+                href="/blog/how-to-compress-pdf"
+                className="font-semibold text-blue-400 hover:text-blue-300"
+              >
+                PDF compression guide
+              </Link>
+              . If you need to reorganize documents first, use the{" "}
+              <Link
+                href="/merge-pdf"
+                className="font-semibold text-blue-400 hover:text-blue-300"
+              >
+                Merge PDF tool
+              </Link>{" "}
+              before compressing the finished file.
+            </p>
+          </div>
+        </section>
         <RelatedTools
           title="Related PDF Tools"
           tools={[
