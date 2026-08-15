@@ -5,12 +5,23 @@ import Link from "next/link";
 import ToolSeoSection from "@/components/ToolSeoSection";
 import RelatedTools from "@/components/RelatedTools";
 import PdfUploader from "../../components/PdfUploader";
+import { trackToolEvent } from "@/lib/analytics";
 
 export default function SplitPdfPage() {
   const [files, setFiles] = useState<File[]>([]);
   const [pageRange, setPageRange] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+
+  function handleFilesChange(nextFiles: File[]) {
+    setFiles(nextFiles);
+    const selected = nextFiles[0];
+    if (selected) {
+      trackToolEvent("tool_file_selected", "split_pdf", {
+        file_size_kb: Math.round(selected.size / 1024),
+      });
+    }
+  }
 
   async function splitPdf() {
     const file = files[0];
@@ -27,6 +38,11 @@ export default function SplitPdfPage() {
 
     setLoading(true);
     setMessage("Splitting your PDF...");
+    const startedAt = performance.now();
+    trackToolEvent("tool_start", "split_pdf", {
+      file_size_kb: Math.round(file.size / 1024),
+      page_range: pageRange.trim(),
+    });
 
     try {
       const formData = new FormData();
@@ -55,7 +71,14 @@ export default function SplitPdfPage() {
 
       URL.revokeObjectURL(url);
       setMessage("Finished! Your selected pages were downloaded.");
+      trackToolEvent("tool_complete", "split_pdf", {
+        output_size_kb: Math.round(blob.size / 1024),
+        engagement_time_msec: Math.round(performance.now() - startedAt),
+      });
     } catch (error) {
+      trackToolEvent("tool_error", "split_pdf", {
+        error_message: error instanceof Error ? error.message : "Split failed.",
+      });
       setMessage(
         error instanceof Error ? error.message : "Split failed."
       );
@@ -78,18 +101,16 @@ export default function SplitPdfPage() {
           <div className="text-center">
             <div className="text-5xl">✂️</div>
 
-            <h1 className="mt-4 text-4xl font-bold">
-              Split PDF
-            </h1>
+            <h1 className="mt-4 text-4xl font-bold">Split PDF Online Free</h1>
 
             <p className="mt-3 text-slate-400">
-              Extract selected pages into a new PDF.
+              Extract individual pages or page ranges into a new PDF.
             </p>
           </div>
 
           <PdfUploader
             files={files}
-            onFilesChange={setFiles}
+            onFilesChange={handleFilesChange}
             multiple={false}
             maximumFiles={1}
           />
@@ -133,20 +154,37 @@ export default function SplitPdfPage() {
         </div>
         <ToolSeoSection
           tool="Split PDF"
-          description="Extract selected pages from a PDF and save them as a new document. This is useful when you only need part of a larger file for an application, report, email, or submission."
+          description="Create a new PDF from only the pages you choose. Enter single pages such as 2 or 7, ranges such as 3-6, or combine both formats for applications, reports and email attachments."
           steps={[
             "Choose a PDF file from your device.",
-            "Enter or select the pages you want to extract.",
-            "Start the split process.",
-            "Download the new PDF containing only the selected pages.",
+            "Enter page numbers and ranges, for example 1-3,5,7.",
+            "Select Split PDF to create the new document.",
+            "Download and check the PDF before sharing it.",
           ]}
           benefits={[
-            "Keep only the pages you need.",
-            "Create smaller, easier-to-share PDF files.",
-            "Prepare documents for applications and submissions.",
+            "Extract non-adjacent pages in one request.",
+            "Create a focused file without changing your original PDF.",
+            "Prepare smaller documents for applications and submissions.",
             "No registration is required.",
           ]}
+          fileHandling="Your PDF is sent to ConvertGeine's processing service to create the selected-page document. Avoid uploading files that you are not authorized to process."
         />
+        <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900 p-8">
+          <h2 className="text-2xl font-bold">Split a PDF or delete pages?</h2>
+          <p className="mt-3 text-slate-300">
+            Use Split PDF when you want a new file containing selected pages. If
+            you want to keep most of the document and remove only a few pages,
+            use the{" "}
+            <Link href="/delete-pdf-pages" className="text-blue-400 hover:text-blue-300">
+              Delete PDF Pages tool
+            </Link>
+            . For more examples, read our{" "}
+            <Link href="/blog/how-to-split-pdf" className="text-blue-400 hover:text-blue-300">
+              step-by-step PDF splitting guide
+            </Link>
+            .
+          </p>
+        </section>
         <RelatedTools
           title="Related PDF Tools"
           tools={[
